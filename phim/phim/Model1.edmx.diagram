@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="524213e592e24de3914bc0b682f7d2d5" Name="Diagram1">
+        <EntityTypeShape EntityType="websiteModel.comment" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.ctDaodien" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.ctDienvien" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.ctlogin" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.ctTheloai" Width="1.5" PointX="6" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.daodien" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.Dienvien" Width="1.5" PointX="3.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.login" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.phim" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.tapphim" Width="1.5" PointX="3" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.tintuc_phim" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="websiteModel.theloai_phim" Width="1.5" PointX="3.75" PointY="16.75" IsExpanded="true" />
+        <AssociationConnector Association="websiteModel.FK_comment_phim" ManuallyRouted="false" />
+        <AssociationConnector Association="websiteModel.FK_ctDaodien_daodien" ManuallyRouted="false" />
+        <AssociationConnector Association="websiteModel.FK_ctDaodien_phim" ManuallyRouted="false" />
+        <AssociationConnector Association="websiteModel.FK_ctDienvien_Dienvien" ManuallyRouted="false" />
+        <AssociationConnector Association="websiteModel.FK_ctDienvien_phim" ManuallyRouted="false" />
+        <AssociationConnector Association="websiteModel.FK_ctlogin_login" ManuallyRouted="false" />
+        <AssociationConnector Association="websiteModel.FK_ctlogin_phim" ManuallyRouted="false" />
+        <AssociationConnector Association="websiteModel.FK_ctTheloai_phim" ManuallyRouted="false" />
+        <AssociationConnector Association="websiteModel.FK_ctTheloai_theloai_phim" ManuallyRouted="false" />
+        <AssociationConnector Association="websiteModel.FK_tapphim_phim" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

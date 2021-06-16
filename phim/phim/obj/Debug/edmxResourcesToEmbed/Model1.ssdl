@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="websiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="comment">
+    <Key>
+      <PropertyRef Name="id_comment" />
+    </Key>
+    <Property Name="id_comment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten" Type="nvarchar(max)" />
+    <Property Name="nd" Type="nvarchar(max)" />
+    <Property Name="id_phim" Type="int" />
+  </EntityType>
+  <EntityType Name="ctDaodien">
+    <Key>
+      <PropertyRef Name="id_ctDaodien" />
+    </Key>
+    <Property Name="id_phim" Type="int" Nullable="false" />
+    <Property Name="id_daodien" Type="int" />
+    <Property Name="id_ctDaodien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ctDienvien">
+    <Key>
+      <PropertyRef Name="id_ctDienvien" />
+    </Key>
+    <Property Name="id_ctDienvien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_dienvien" Type="int" />
+    <Property Name="id_phim" Type="int" />
+  </EntityType>
+  <EntityType Name="ctlogin">
+    <Key>
+      <PropertyRef Name="id_ctlogin" />
+    </Key>
+    <Property Name="id_ctlogin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_login" Type="int" />
+    <Property Name="id_phim" Type="int" />
+  </EntityType>
+  <EntityType Name="ctTheloai">
+    <Key>
+      <PropertyRef Name="id_ctTheloai" />
+    </Key>
+    <Property Name="id_ctTheloai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_phim" Type="int" />
+    <Property Name="id_theLoai" Type="int" />
+  </EntityType>
+  <EntityType Name="daodien">
+    <Key>
+      <PropertyRef Name="id_daodien" />
+    </Key>
+    <Property Name="id_daodien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten" Type="nvarchar(max)" />
+    <Property Name="img" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Dienvien">
+    <Key>
+      <PropertyRef Name="id_Dienvien" />
+    </Key>
+    <Property Name="id_Dienvien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten" Type="nvarchar(max)" />
+    <Property Name="img" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="login">
+    <Key>
+      <PropertyRef Name="id_login" />
+    </Key>
+    <Property Name="id_login" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="taikhoan" Type="nvarchar(max)" />
+    <Property Name="matkhau" Type="nvarchar(max)" />
+    <Property Name="role" Type="int" />
+    <Property Name="ten" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="phim">
+    <Key>
+      <PropertyRef Name="id_phim" />
+    </Key>
+    <Property Name="id_phim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten_phim" Type="nvarchar(max)" />
+    <Property Name="anh_daidien" Type="nvarchar(max)" />
+    <Property Name="trailer" Type="nvarchar(max)" />
+    <Property Name="mota" Type="nvarchar(max)" />
+    <Property Name="imdb" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tapphim">
+    <Key>
+      <PropertyRef Name="id_tapphim" />
+    </Key>
+    <Property Name="id_tapphim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_phim" Type="int" />
+    <Property Name="tapso" Type="int" />
+    <Property Name="ngay_update" Type="datetime" />
+    <Property Name="link" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tintuc_phim">
+    <Key>
+      <PropertyRef Name="id_tintuc_phim" />
+    </Key>
+    <Property Name="id_tintuc_phim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tieu_de" Type="nvarchar(max)" />
+    <Property Name="anh_daidien" Type="nvarchar(max)" />
+    <Property Name="tom_tat_tin" Type="nvarchar(max)" />
+    <Property Name="noidung" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="theloai_phim">
+    <Key>
+      <PropertyRef Name="id_theloai" />
+    </Key>
+    <Property Name="id_theloai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten_theloai_phim" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_comment_phim">
+    <End Role="phim" Type="Self.phim" Multiplicity="0..1" />
+    <End Role="comment" Type="Self.comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phim">
+        <PropertyRef Name="id_phim" />
+      </Principal>
+      <Dependent Role="comment">
+        <PropertyRef Name="id_phim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctDaodien_daodien">
+    <End Role="daodien" Type="Self.daodien" Multiplicity="0..1" />
+    <End Role="ctDaodien" Type="Self.ctDaodien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="daodien">
+        <PropertyRef Name="id_daodien" />
+      </Principal>
+      <Dependent Role="ctDaodien">
+        <PropertyRef Name="id_daodien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctDaodien_phim">
+    <End Role="phim" Type="Self.phim" Multiplicity="1" />
+    <End Role="ctDaodien" Type="Self.ctDaodien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phim">
+        <PropertyRef Name="id_phim" />
+      </Principal>
+      <Dependent Role="ctDaodien">
+        <PropertyRef Name="id_phim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctDienvien_Dienvien">
+    <End Role="Dienvien" Type="Self.Dienvien" Multiplicity="0..1" />
+    <End Role="ctDienvien" Type="Self.ctDienvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dienvien">
+        <PropertyRef Name="id_Dienvien" />
+      </Principal>
+      <Dependent Role="ctDienvien">
+        <PropertyRef Name="id_dienvien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctDienvien_phim">
+    <End Role="phim" Type="Self.phim" Multiplicity="0..1" />
+    <End Role="ctDienvien" Type="Self.ctDienvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phim">
+        <PropertyRef Name="id_phim" />
+      </Principal>
+      <Dependent Role="ctDienvien">
+        <PropertyRef Name="id_phim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctlogin_login">
+    <End Role="login" Type="Self.login" Multiplicity="0..1" />
+    <End Role="ctlogin" Type="Self.ctlogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="login">
+        <PropertyRef Name="id_login" />
+      </Principal>
+      <Dependent Role="ctlogin">
+        <PropertyRef Name="id_login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctlogin_phim">
+    <End Role="phim" Type="Self.phim" Multiplicity="0..1" />
+    <End Role="ctlogin" Type="Self.ctlogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phim">
+        <PropertyRef Name="id_phim" />
+      </Principal>
+      <Dependent Role="ctlogin">
+        <PropertyRef Name="id_phim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctTheloai_phim">
+    <End Role="phim" Type="Self.phim" Multiplicity="0..1" />
+    <End Role="ctTheloai" Type="Self.ctTheloai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phim">
+        <PropertyRef Name="id_phim" />
+      </Principal>
+      <Dependent Role="ctTheloai">
+        <PropertyRef Name="id_phim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ctTheloai_theloai_phim">
+    <End Role="theloai_phim" Type="Self.theloai_phim" Multiplicity="0..1" />
+    <End Role="ctTheloai" Type="Self.ctTheloai" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="theloai_phim">
+        <PropertyRef Name="id_theloai" />
+      </Principal>
+      <Dependent Role="ctTheloai">
+        <PropertyRef Name="id_theLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tapphim_phim">
+    <End Role="phim" Type="Self.phim" Multiplicity="0..1" />
+    <End Role="tapphim" Type="Self.tapphim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phim">
+        <PropertyRef Name="id_phim" />
+      </Principal>
+      <Dependent Role="tapphim">
+        <PropertyRef Name="id_phim" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="websiteModelStoreContainer">
+    <EntitySet Name="comment" EntityType="Self.comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ctDaodien" EntityType="Self.ctDaodien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ctDienvien" EntityType="Self.ctDienvien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ctlogin" EntityType="Self.ctlogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ctTheloai" EntityType="Self.ctTheloai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="daodien" EntityType="Self.daodien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dienvien" EntityType="Self.Dienvien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="phim" EntityType="Self.phim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tapphim" EntityType="Self.tapphim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tintuc_phim" EntityType="Self.tintuc_phim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="theloai_phim" EntityType="Self.theloai_phim" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_comment_phim" Association="Self.FK_comment_phim">
+      <End Role="phim" EntitySet="phim" />
+      <End Role="comment" EntitySet="comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctDaodien_daodien" Association="Self.FK_ctDaodien_daodien">
+      <End Role="daodien" EntitySet="daodien" />
+      <End Role="ctDaodien" EntitySet="ctDaodien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctDaodien_phim" Association="Self.FK_ctDaodien_phim">
+      <End Role="phim" EntitySet="phim" />
+      <End Role="ctDaodien" EntitySet="ctDaodien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctDienvien_Dienvien" Association="Self.FK_ctDienvien_Dienvien">
+      <End Role="Dienvien" EntitySet="Dienvien" />
+      <End Role="ctDienvien" EntitySet="ctDienvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctDienvien_phim" Association="Self.FK_ctDienvien_phim">
+      <End Role="phim" EntitySet="phim" />
+      <End Role="ctDienvien" EntitySet="ctDienvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctlogin_login" Association="Self.FK_ctlogin_login">
+      <End Role="login" EntitySet="login" />
+      <End Role="ctlogin" EntitySet="ctlogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctlogin_phim" Association="Self.FK_ctlogin_phim">
+      <End Role="phim" EntitySet="phim" />
+      <End Role="ctlogin" EntitySet="ctlogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctTheloai_phim" Association="Self.FK_ctTheloai_phim">
+      <End Role="phim" EntitySet="phim" />
+      <End Role="ctTheloai" EntitySet="ctTheloai" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ctTheloai_theloai_phim" Association="Self.FK_ctTheloai_theloai_phim">
+      <End Role="theloai_phim" EntitySet="theloai_phim" />
+      <End Role="ctTheloai" EntitySet="ctTheloai" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tapphim_phim" Association="Self.FK_tapphim_phim">
+      <End Role="phim" EntitySet="phim" />
+      <End Role="tapphim" EntitySet="tapphim" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
